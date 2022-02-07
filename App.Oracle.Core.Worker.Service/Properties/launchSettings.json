@@ -1,0 +1,11 @@
+﻿{
+  "profiles": {
+    "App.Oracle.Core.Worker.Service": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
