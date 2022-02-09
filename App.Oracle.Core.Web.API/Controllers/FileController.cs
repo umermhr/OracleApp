@@ -35,6 +35,57 @@ namespace App.Oracle.Core.Web.API.Controllers
             return NotFound();
         }
 
+        [Route(template: "getlogfile")]
+        [HttpGet]
+        //[BasicAuth]
+        public IActionResult GetLogFile()
+        {
+            try
+            {
+                var logFile = _fileHelper.ReadLogFile();
+                if (logFile != null)
+                {
+                    return Ok(value: logFile);
+                }
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+            }
+
+            return NotFound();
+        }
+
+        [Route(template: "downloadlogfile")]
+        [HttpGet]
+        //[BasicAuth]
+        public IActionResult DownloadLogFile()
+        {
+            try
+            {
+                var logFilePath = _fileHelper.GetLogFilePath();
+                var fileInfo = new FileInfo(logFilePath);
+                if (fileInfo.Exists)
+                {
+                    var fileDownload = new FileDownload
+                    {
+                        ContentType = "application/octet-stream",
+                        FileName = fileInfo.Name,
+                        FileContent = System.IO.File.ReadAllBytes(logFilePath)
+                    };
+                    return Ok(fileDownload);
+                }
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+            }
+
+            return NotFound();
+        }
+
         [Route(template: "getlist")]
         [HttpGet]
         //[BasicAuth]
@@ -43,6 +94,28 @@ namespace App.Oracle.Core.Web.API.Controllers
             try
             {
                 var list = _fileHelper.GetFileList();
+                if (list != null && list.Any())
+                {
+                    return Ok(value: list);
+                }
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+            }
+
+            return NotFound();
+        }
+
+        [Route(template: "getfilecontent/{fileId?}")]
+        [HttpGet]
+        //[BasicAuth]
+        public IActionResult GetFileContent([FromRoute] int fileId)
+        {
+            try
+            {
+                var list = _fileHelper.GetFileContentByFileId(fileId);
                 if (list != null && list.Any())
                 {
                     return Ok(value: list);

@@ -14,6 +14,40 @@
             _oracleConnection = new OracleConnection(_configuration["ConnectionStrings:OracleConnection"]);
         }
 
+        public LogFile ReadLogFile()
+        {
+            var logFile = new LogFile();
+            try
+            {
+                var logFilePath = GetLogFilePath();
+                var fileInfo = new FileInfo(logFilePath);
+                var fileContent = File.ReadAllLines(logFilePath, Encoding.UTF8);
+                var lineNo = 0;
+                var fileContents = new List<LogFileContent>();
+                foreach (var line in fileContent)
+                {
+                    LogFileContent logFileContent = new LogFileContent
+                    {
+                        LineNo = ++lineNo,
+                        LineContent = line
+                    };
+                    fileContents.Add(logFileContent);
+                }
+
+                logFile.FileContents = fileContents;
+                logFile.FileName = fileInfo.Name;
+                logFile.LogFilePath = logFilePath;
+                logFile.CreationTime = fileInfo.CreationTime;
+                logFile.LastModifiedTime = fileInfo.LastWriteTime;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+            }
+
+            return logFile;
+        }
+
         public void ReadFileContent()
         {
             try
@@ -185,6 +219,20 @@
                 _oracleConnection.Close();
             }
             return affectedRows;
+        }
+
+        public string GetLogFilePath()
+        {
+            var filePath = string.Empty;
+            try
+            {
+                filePath = $"{AppDomain.CurrentDomain.BaseDirectory}\\logs\\{DateTime.Now:yyyy}\\{DateTime.Now:MM}\\app-own-{DateTime.Now:dd}.log";
+            }
+            catch(Exception ex)
+            {
+                _logger.Error(ex);
+            }
+            return filePath;
         }
     }
 }

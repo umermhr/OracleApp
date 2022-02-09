@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdditionalFiles", "AdditionalFiles", "{3A982EE2-E4CC-4B03-B3E7-B644D9EFC559}"
 	ProjectSection(SolutionItems) = preProject
 		AdditionalFiles\db-script.sql = AdditionalFiles\db-script.sql
+		AdditionalFiles\tables-sps-script.sql = AdditionalFiles\tables-sps-script.sql
 	EndProjectSection
 EndProject
 Global
