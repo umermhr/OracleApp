@@ -1,1 +1,18 @@
-﻿
+﻿global using Newtonsoft.Json;
+global using System.Net;
+global using System.Text;
+global using Microsoft.AspNetCore.Mvc;
+global using App.Oracle.Core.Shared.Util.Cryptography;
+global using Microsoft.AspNetCore.Mvc.Filters;
+global using System.Net.Http.Headers;
+global using NLog.Web;
+global using NLog;
+global using App.Oracle.Core.Web.API.Security;
+global using Microsoft.AspNetCore.Mvc.Infrastructure;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using System.Text.Json.Serialization;
+global using System.Collections.Generic;
+global using System.IO;
+global using App.Oracle.Core.Web.API.Repository;
+global using App.Oracle.Core.Shared.Util.Oracle;
+global using App.Oracle.Core.Shared.Models;
