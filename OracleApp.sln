@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Oracle.Core.Web.API", "App.Oracle.Core.Web.API\App.Oracle.Core.Web.API.csproj", "{88EDE955-1FFD-49D2-BDFC-0C0D4078A2F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Oracle.Core.Web.API", "App.Oracle.Core.Web.API\App.Oracle.Core.Web.API.csproj", "{88EDE955-1FFD-49D2-BDFC-0C0D4078A2F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Oracle.Core.Web.MVC", "App.Oracle.Core.Web.MVC\App.Oracle.Core.Web.MVC.csproj", "{16B69BF5-165D-4977-8C63-3235357B7DBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Oracle.Core.Web.MVC", "App.Oracle.Core.Web.MVC\App.Oracle.Core.Web.MVC.csproj", "{16B69BF5-165D-4977-8C63-3235357B7DBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Oracle.Core.Worker.Service", "App.Oracle.Core.Worker.Service\App.Oracle.Core.Worker.Service.csproj", "{55BBC959-9AA0-4942-BE95-30B144B5CD45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Oracle.Core.Worker.Service", "App.Oracle.Core.Worker.Service\App.Oracle.Core.Worker.Service.csproj", "{55BBC959-9AA0-4942-BE95-30B144B5CD45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Oracle.Core.Shared", "App.Oracle.Core.Shared\App.Oracle.Core.Shared.csproj", "{D9A860A4-4E56-4D1A-9526-CDADF1DFE03E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Oracle.Core.Shared", "App.Oracle.Core.Shared\App.Oracle.Core.Shared.csproj", "{D9A860A4-4E56-4D1A-9526-CDADF1DFE03E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdditionalFiles", "AdditionalFiles", "{3A982EE2-E4CC-4B03-B3E7-B644D9EFC559}"
+	ProjectSection(SolutionItems) = preProject
+		AdditionalFiles\db-script.sql = AdditionalFiles\db-script.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
