@@ -36,6 +36,7 @@
                     {
                         fileInfo.MoveTo($"{backupFolderPath}\\{fileInfo.Name}", true);
                         _logger.Info($"skipped file {fileInfo.Name} because it is not txt file.");
+                        continue;
                     }
                     _logger.Info($"creating master file record in database.");
                     var fileId = InsertMasterFileRecord(fileInfo.Name, fileInfo.CreationTime, "SYSTEM");

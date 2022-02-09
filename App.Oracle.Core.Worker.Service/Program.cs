@@ -1,9 +1,13 @@
-using App.Oracle.Core.Worker.Service;
-
 IHost host = Host.CreateDefaultBuilder(args)
+    .UseWindowsService(options =>
+    {
+        options.ServiceName = "App Background Worker";
+    })
     .ConfigureServices(services =>
     {
-        services.AddHostedService<Worker>();
+        services.AddHostedService<BackgroundTaskWorker>();
+        services.AddSingleton<IBackgroundTaskEngine, BackgroundTaskEngine>();
+        services.AddHttpClient<IBackgroundTasks, BackgroundTasks>();
     })
     .Build();
 
