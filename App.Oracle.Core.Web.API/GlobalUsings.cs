@@ -16,3 +16,5 @@ global using System.IO;
 global using App.Oracle.Core.Web.API.Repository;
 global using App.Oracle.Core.Shared.Util.Oracle;
 global using App.Oracle.Core.Shared.Models;
+global using Oracle.ManagedDataAccess.Client;
+global using System.Data;

@@ -1,0 +1,102 @@
+CREATE TABLE FILE_MASTER (
+  id NUMBER GENERATED ALWAYS AS IDENTITY,
+  FILE_NAME VARCHAR2(500),
+  FILE_CREATION_TS TIMESTAMP,
+  RECORD_CREATION_TS TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+  RECORD_CREATED_BY VARCHAR2(400),
+  PRIMARY KEY(id)
+);
+
+INSERT INTO FILE_MASTER (FILE_NAME, FILE_CREATION_TS, RECORD_CREATED_BY) VALUES('FILE123.TXT', CURRENT_TIMESTAMP, 'SYSTEM');
+INSERT INTO FILE_MASTER (FILE_NAME, FILE_CREATION_TS, RECORD_CREATED_BY) VALUES('FILE124.TXT', CURRENT_TIMESTAMP, 'SYSTEM');
+INSERT INTO FILE_MASTER (FILE_NAME, FILE_CREATION_TS, RECORD_CREATED_BY) VALUES('FILE125.TXT', CURRENT_TIMESTAMP, 'SYSTEM');
+INSERT INTO FILE_MASTER (FILE_NAME, FILE_CREATION_TS, RECORD_CREATED_BY) VALUES('FILE126.TXT', CURRENT_TIMESTAMP, 'SYSTEM');
+INSERT INTO FILE_MASTER (FILE_NAME, FILE_CREATION_TS, RECORD_CREATED_BY) VALUES('FILE127.TXT', CURRENT_TIMESTAMP, 'SYSTEM');
+COMMIT;
+
+SELECT * FROM FILE_MASTER;
+
+SELECT * FROM FILE_CONTENT;
+
+create or replace PROCEDURE files_get_all
+AS
+  c1 SYS_REFCURSOR;  
+BEGIN
+
+  open c1 for
+  SELECT *
+  FROM FILE_MASTER;
+
+  DBMS_SQL.RETURN_RESULT(c1);
+
+END;
+
+
+create or replace procedure insert_file_master(v_filename FILE_MASTER.FILE_NAME%TYPE,
+    v_file_creation FILE_MASTER.FILE_CREATION_TS%TYPE,
+    v_record_by FILE_MASTER.RECORD_CREATED_BY%TYPE,
+    v_file_id out FILE_MASTER.id%TYPE)
+as
+begin
+	INSERT INTO FILE_MASTER (FILE_NAME, FILE_CREATION_TS, RECORD_CREATED_BY) 
+	VALUES(v_filename, v_file_creation, v_record_by)
+    returning id into v_file_id;
+end;
+
+
+
+declare
+    l_batchid FILE_MASTER.id%TYPE;
+begin
+    insert_file_master(v_filename => 'Batch 1',
+        v_file_creation => '09-FEB-22 02.12.49.245000000 PM',
+        v_record_by => 'SYSTEM',
+        v_file_id => l_batchid);
+    dbms_output.put_line('Generated id: ' || l_batchid);
+
+    insert_file_master(v_filename => 'Batch 2',
+        v_file_creation => '09-FEB-22 02.12.49.245000000 PM',
+        v_record_by => 'SYSTEM',
+        v_file_id => l_batchid);
+    dbms_output.put_line('Generated id: ' || l_batchid);
+end;
+
+--DELETE FROM FILE_MASTER;
+
+CREATE TABLE FILE_CONTENT (
+  id NUMBER GENERATED ALWAYS AS IDENTITY,
+  FILE_ID NUMERIC(10),
+  LINE_NO NUMERIC(10),
+  LINE_CONTENT VARCHAR2(400),
+  RECORD_CREATION_TS TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+  RECORD_CREATED_BY VARCHAR2(400),
+  CONSTRAINT file_content_pk PRIMARY KEY(id),
+  CONSTRAINT fk_file_master
+    FOREIGN KEY (FILE_ID)
+    REFERENCES FILE_MASTER(id)
+);
+
+create or replace PROCEDURE get_file_content_by_file_id(v_file_id FILE_CONTENT.FILE_ID%TYPE)
+AS
+  c1 SYS_REFCURSOR;  
+BEGIN
+
+  open c1 for
+  SELECT *
+  FROM FILE_CONTENT
+  WHERE FILE_ID = v_file_id;
+
+  DBMS_SQL.RETURN_RESULT(c1);
+
+END;
+
+create or replace procedure insert_file_content(v_file_id FILE_CONTENT.FILE_ID%TYPE,
+    v_line_no FILE_CONTENT.LINE_NO%TYPE,
+    v_line_content FILE_CONTENT.LINE_CONTENT%TYPE,
+    v_record_by FILE_CONTENT.RECORD_CREATED_BY%TYPE)
+as
+begin
+	INSERT INTO FILE_CONTENT (FILE_ID, LINE_NO, LINE_CONTENT, RECORD_CREATED_BY) 
+	VALUES(v_file_id, v_line_no, v_line_content, v_record_by);
+end;
+

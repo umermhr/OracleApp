@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App.Oracle.Core.Web.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/file")]
     [ApiController]
     public class FileController : ControllerBase
     {
@@ -15,6 +15,24 @@ namespace App.Oracle.Core.Web.API.Controllers
         {
             _fileHelper = fileHelper;
             _env = env;
+        }
+
+        [Route(template: "checkforfiles")]
+        [HttpGet]
+        //[BasicAuth]
+        public IActionResult CheckForFiles()
+        {
+            try
+            {
+                _fileHelper.ReadFileContent();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+            }
+
+            return NotFound();
         }
 
         [Route(template: "getlist")]
