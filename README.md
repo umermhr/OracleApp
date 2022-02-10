@@ -120,3 +120,9 @@ end;
 
 1. Check the Web API URL in appsettings.json in App.Oracle.Core.Web.MVC under WebService section
 2. Check the Web API URL in appsettings.json in App.Oracle.Core.Worker.Service under WebService section
+
+### Web API Basic Authentication Credentials
+
+username: api-local-user
+
+password: Api@2022
