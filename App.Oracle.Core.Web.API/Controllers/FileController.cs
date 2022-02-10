@@ -19,7 +19,7 @@ namespace App.Oracle.Core.Web.API.Controllers
 
         [Route(template: "checkforfiles")]
         [HttpGet]
-        //[BasicAuth]
+        [BasicAuth]
         public IActionResult CheckForFiles()
         {
             try
@@ -37,7 +37,7 @@ namespace App.Oracle.Core.Web.API.Controllers
 
         [Route(template: "getlogfile")]
         [HttpGet]
-        //[BasicAuth]
+        [BasicAuth]
         public IActionResult GetLogFile()
         {
             try
@@ -59,7 +59,7 @@ namespace App.Oracle.Core.Web.API.Controllers
 
         [Route(template: "downloadlogfile")]
         [HttpGet]
-        //[BasicAuth]
+        [BasicAuth]
         public IActionResult DownloadLogFile()
         {
             try
@@ -88,7 +88,7 @@ namespace App.Oracle.Core.Web.API.Controllers
 
         [Route(template: "getlist")]
         [HttpGet]
-        //[BasicAuth]
+        [BasicAuth]
         public IActionResult GetList()
         {
             try
@@ -110,7 +110,7 @@ namespace App.Oracle.Core.Web.API.Controllers
 
         [Route(template: "getfilecontent/{fileId?}")]
         [HttpGet]
-        //[BasicAuth]
+        [BasicAuth]
         public IActionResult GetFileContent([FromRoute] int fileId)
         {
             try
