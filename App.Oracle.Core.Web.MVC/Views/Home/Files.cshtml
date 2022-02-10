@@ -1,0 +1,136 @@
+﻿@model IEnumerable<FileMaster>
+
+@{
+    ViewData["Title"] = "Files";
+}
+
+<div class="card shadow mb-4">
+    <h5 class="card-header">Files Listing</h5>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table id="views-table-entries" class="table table-hover table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>
+                                    File Name
+                                </th>
+
+                                <th>
+                                    File Creation Time
+                                </th>
+
+                                <th>
+                                    Record Creation Time
+                                </th>
+
+                                <th>
+                                    Record Created By
+                                </th>
+
+                                <th>
+                                    View Detail
+                                </th>
+
+                                <th>
+                                    View Content
+                                </th>
+                            </tr>
+                        </thead>                       
+
+                        <tbody>
+                            @if (Model.Any())
+                            {
+                                foreach (var row in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelNav => row.FileName)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelNav => row.FileCreationTime)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelNav => row.RecordCreationTime)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelNav => row.RecordCreatedBy)
+                                        </td>
+
+                                        <td>
+
+                                            <a class="dropdown-item detail-files" href="#" data-bs-toggle="modal" data-bs-target="#modal-files"
+                                       data-filename="@row.FileName"
+                                       data-creationtime="@row.FileCreationTime"
+                                       data-recordtime="@row.RecordCreationTime"
+                                       data-recordby="@row.RecordCreatedBy">Quick Detail</a>
+
+                                        </td>
+
+                                        <td>
+                                            <a class="dropdown-item" asp-controller="Home" asp-action="FileContent" asp-route-fileId="@row.Id">View Content</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr id="no-more-entries">
+                                    <td class="text-center" colspan="5">No more entries.</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-files" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detail</h4>
+                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>File Name</th>
+                            <td><span id="filename"></span></td>
+                        </tr>
+
+                        <tr>
+                            <th>File Creation Time</th>
+                            <td><span id="creationtime"></span></td>
+                        </tr>
+
+                        <tr>
+                            <th>Record Creation Time</th>
+                            <td><span id="recordtime"></span></td>
+                        </tr>
+
+                        <tr>
+                            <th>Record By</th>
+                            <td><span id="recordby"></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger shadow-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

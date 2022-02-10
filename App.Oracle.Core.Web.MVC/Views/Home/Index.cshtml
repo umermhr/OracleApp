@@ -1,8 +1,34 @@
-﻿@{
+﻿@model LogFile
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="card shadow">
+    <h5 class="card-header">Log File Viewer</h5>
+    <div class="card-body">
+        <h5 class="card-title">Log File Detail</h5>
+        <div class="row">
+            <div class="col ms-4 mb-3">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item mb-2"><div><span class="text-muted">File Name:</span> <span class="text-wrap">@Model.FileName</span></div></li>
+                    @*<li class="list-group-item mb-2"><div><span class="text-muted">File Path:</span> <span class="text-wrap">@Model.LogFilePath</span></div></li>*@
+                </ul>
+            </div>
+            <div class="col me-4 mb-3">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item mb-2"><div><span class="text-muted">Created On:</span> <span class="text-wrap">@Model.CreationTime</span></div></li>
+                    @*<li class="list-group-item mb-2"><div><span class="text-muted">Last Modified:</span> <span class="text-wrap">@Model.LastModifiedTime</span></div></li>*@
+                </ul>
+            </div>
+        </div>
+        <a asp-controller="Home" asp-action="Download" class="card-link">Download Log File</a>
+        <h5 class="card-title mt-4">Log File Content</h5>
+        <div class="card-footer text-muted">
+            @foreach (var content in Model.FileContents)
+            {
+                <p><small>@content.LineNo - @content.LineContent</small></p>
+            }
+        </div>
+    </div>
 </div>

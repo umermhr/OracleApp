@@ -14,3 +14,5 @@ global using System.Collections.Generic;
 global using System.IO;
 global using App.Oracle.Core.Web.MVC.Repository;
 global using App.Oracle.Core.Shared.Models;
+global using Microsoft.AspNetCore.Authentication.Cookies;
+global using Microsoft.AspNetCore.CookiePolicy;

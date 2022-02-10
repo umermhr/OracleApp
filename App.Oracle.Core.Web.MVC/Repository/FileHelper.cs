@@ -28,12 +28,12 @@
             return responseObj;
         }
 
-        public async Task<FileContent> GetFileContentAsync(int fileId)
+        public async Task<IEnumerable<FileContent>> GetFileContentAsync(int fileId)
         {
-            FileContent? responseObj = null;
+            IList<FileContent>? responseObj = null;
             try
             {
-                responseObj = await (await _httpClient.GetAsync(requestUri: $"file/getfilecontent/{fileId}")).Content.ReadFromJsonAsync<FileContent>();
+                responseObj = await (await _httpClient.GetAsync(requestUri: $"file/getfilecontent/{fileId}")).Content.ReadFromJsonAsync<FileContent[]>();
             }
             catch (Exception ex)
             {
@@ -42,7 +42,7 @@
             return responseObj;
         }
 
-        public async Task<LogFile> GetLogFileAsync(int fileId)
+        public async Task<LogFile> GetLogFileAsync()
         {
             LogFile? responseObj = null;
             try

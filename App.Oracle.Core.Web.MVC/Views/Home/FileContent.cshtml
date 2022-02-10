@@ -1,0 +1,73 @@
+﻿@model IEnumerable<FileContent>
+
+@{
+    ViewData["Title"] = "File Content";
+}
+
+<div class="card shadow mb-4">
+    <h5 class="card-header">File Content</h5>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table id="views-table-entries" class="table table-hover table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>
+                                    Line No
+                                </th>
+
+                                <th>
+                                    Line Content
+                                </th>
+
+                                <th>
+                                    Record Creation Time
+                                </th>
+
+                                <th>
+                                    Record Created By
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @if (Model.Any())
+                            {
+                                foreach (var row in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelNav => row.LineNo)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelNav => row.LineContent)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelNav => row.RecordCreationTime)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelNav => row.RecordCreatedBy)
+                                        </td>
+                                        
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr id="no-more-entries">
+                                    <td class="text-center" colspan="4">No more entries.</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
