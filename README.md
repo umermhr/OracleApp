@@ -124,4 +124,5 @@ end;
 ### Web API Basic Authentication Credentials
 
 username: api-local-user
+
 password: Api@2022
