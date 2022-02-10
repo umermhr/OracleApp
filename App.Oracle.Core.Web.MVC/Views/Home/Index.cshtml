@@ -5,7 +5,7 @@
 }
 
 <div class="card shadow">
-    <h5 class="card-header">Log File Viewer</h5>
+    <h5 class="card-header">Log File Viewer - Auto Refresh Every 60 Seconds</h5>
     <div class="card-body">
         <h5 class="card-title">Log File Detail</h5>
         <div class="row">
@@ -24,7 +24,7 @@
         </div>
         <a asp-controller="Home" asp-action="Download" class="card-link">Download Log File</a>
         <h5 class="card-title mt-4">Log File Content</h5>
-        <div class="card-footer text-muted">
+        <div class="p-3 mb-2 bg-light text-dark text-muted">
             @foreach (var content in Model.FileContents)
             {
                 <p><small>@content.LineNo - @content.LineContent</small></p>

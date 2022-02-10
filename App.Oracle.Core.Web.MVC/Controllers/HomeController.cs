@@ -7,11 +7,13 @@ namespace App.Oracle.Core.Web.MVC.Controllers
     public class HomeController : Controller
     {
         private readonly IFileHelper _fileHelper;
+        private readonly IConfiguration _configuration;
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public HomeController(IFileHelper fileHelper)
+        public HomeController(IFileHelper fileHelper, IConfiguration configuration)
         {
             _fileHelper = fileHelper;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -19,6 +21,7 @@ namespace App.Oracle.Core.Web.MVC.Controllers
         {
             try
             {
+                Response.Headers.Add("Refresh", _configuration["AppSettings:AutoRefreshPage"]);
                 var logFile = await _fileHelper.GetLogFileAsync();
                 return View(logFile);
             }
