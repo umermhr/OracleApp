@@ -20,6 +20,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdditionalFiles", "Addition
 		AdditionalFiles\tables-sps-script.sql = AdditionalFiles\tables-sps-script.sql
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Db Script", "Db Script", "{27090D20-8DDE-4D4D-AE43-4D668C3D1316}"
+	ProjectSection(SolutionItems) = preProject
+		AdditionalFiles\db-script.sql = AdditionalFiles\db-script.sql
+		AdditionalFiles\new-db-user-script.sql = AdditionalFiles\new-db-user-script.sql
+		AdditionalFiles\tables-sps-script.sql = AdditionalFiles\tables-sps-script.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{6EA92080-0F06-472C-A868-68F491381E61}"
+	ProjectSection(SolutionItems) = preProject
+		AdditionalFiles\API-Specification_v1.0.docx = AdditionalFiles\API-Specification_v1.0.docx
+		AdditionalFiles\API-Specification_v1.0.pdf = AdditionalFiles\API-Specification_v1.0.pdf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +58,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{27090D20-8DDE-4D4D-AE43-4D668C3D1316} = {3A982EE2-E4CC-4B03-B3E7-B644D9EFC559}
+		{6EA92080-0F06-472C-A868-68F491381E61} = {3A982EE2-E4CC-4B03-B3E7-B644D9EFC559}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {244A2EDE-7F53-420C-BFBD-14CF88611916}
