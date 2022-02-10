@@ -22,7 +22,7 @@ Now let's setup the Oracle Database:
 
 ### Setup Oracle Database
 
-1. If you do not already have access to an Oracle Database, install latest version Oracle Database Express Edition (XE).
+1. If you do not already have access to an Oracle Database, install latest version of Oracle Database Express Edition (XE).
 2. Install Oracle Developer Tools For Visual Studio or Oracle SQL Developer tool
 3. Connect to Oracle Database & Create the Database User using below script
 
