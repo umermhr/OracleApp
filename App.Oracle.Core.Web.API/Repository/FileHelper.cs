@@ -81,7 +81,8 @@
                     var lineNo = 1;
                     foreach(var line in fileContent)
                     {
-                        InsertFileContentRecord(fileId, lineNo, line, "SYSTEM");
+                        if (line != "[HEADER]")
+                            InsertFileContentRecord(fileId, lineNo, line, "SYSTEM");
                         lineNo++;
                     }
                     _logger.Info($"finished reading file {fileInfo.Name}.");
