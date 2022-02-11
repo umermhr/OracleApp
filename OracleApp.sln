@@ -12,13 +12,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Oracle.Core.Shared", "App.Oracle.Core.Shared\App.Oracle.Core.Shared.csproj", "{D9A860A4-4E56-4D1A-9526-CDADF1DFE03E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdditionalFiles", "AdditionalFiles", "{3A982EE2-E4CC-4B03-B3E7-B644D9EFC559}"
-	ProjectSection(SolutionItems) = preProject
-		AdditionalFiles\API-Specification_v1.0.docx = AdditionalFiles\API-Specification_v1.0.docx
-		AdditionalFiles\API-Specification_v1.0.pdf = AdditionalFiles\API-Specification_v1.0.pdf
-		AdditionalFiles\db-script.sql = AdditionalFiles\db-script.sql
-		AdditionalFiles\new-db-user-script.sql = AdditionalFiles\new-db-user-script.sql
-		AdditionalFiles\tables-sps-script.sql = AdditionalFiles\tables-sps-script.sql
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Db Script", "Db Script", "{27090D20-8DDE-4D4D-AE43-4D668C3D1316}"
 	ProjectSection(SolutionItems) = preProject
