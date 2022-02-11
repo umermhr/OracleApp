@@ -1,6 +1,6 @@
 # Oracle App
 
-A .net 6 application to connect the oracle database (express edition), read files from directoy and save into oracle datatable. There are  projects in this solutions:
+A .net 6 application to connect the oracle database (express edition), read files from directory and save into oracle datatable. There are  projects in this solutions:
 
 #### App.Oracle.Core.Shared
 
