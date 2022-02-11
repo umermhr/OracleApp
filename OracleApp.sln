@@ -24,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 	ProjectSection(SolutionItems) = preProject
 		AdditionalFiles\API-Specification_v1.0.docx = AdditionalFiles\API-Specification_v1.0.docx
 		AdditionalFiles\API-Specification_v1.0.pdf = AdditionalFiles\API-Specification_v1.0.pdf
+		AdditionalFiles\Documentation\Project-Technical-Specification_v1.0.docx = AdditionalFiles\Documentation\Project-Technical-Specification_v1.0.docx
 	EndProjectSection
 EndProject
 Global
